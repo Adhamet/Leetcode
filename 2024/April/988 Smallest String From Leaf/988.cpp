@@ -13,13 +13,12 @@ class Solution {
 public:
     vector<string> answers;
     string smallestFromLeaf(TreeNode* root) {
-        string rootStr = " ";
-        rootStr[0] = root->val+'a';
+        string rootStr = ""; rootStr += char(root->val+'a');
+        
         dfs(root, rootStr);
         for(string& ans: answers) reverse(ans.begin(),ans.end());
 
-        string a = " ";
-        a[0] = 'z'+1;
+        string a = ""; a += char('z'+1);
         for(string ans: answers) if(ans < a) a = ans;
         return a;
     }
